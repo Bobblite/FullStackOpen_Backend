@@ -9,6 +9,7 @@ morgan.token('body', req => {
 const app = express()
 
 app.use(cors())
+app.use(express.static('dist'))
 app.use(express.json())
 app.use(morgan(':method :url :status - :response-time ms :body'))
 
@@ -38,11 +39,6 @@ persons = [
 const generateID = () => {
     return Math.floor(Math.random() * 100000)
 }
-
-// Landing page
-app.get('/', (request, response) => {
-    response.end('<h1>Hello World</h1>')
-})
 
 // Info page
 app.get('/info', (request, response) => {
